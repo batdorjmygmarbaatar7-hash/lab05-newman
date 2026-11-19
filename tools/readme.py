@@ -23,7 +23,7 @@ def stats(t):
         return None
     d = {}
     for k in ("iterations", "requests", "test-scripts", "assertions"):
-        m = re.search(rf"│\s*{k}\s*│\s*(\d+)\s*│\s*(\d+)\s*│", t)
+        m = re.search(rf"[│|]\s*{k}\s*[│|]\s*(\d+)\s*[│|]\s*(\d+)\s*[│|]", t)
         if m:
             d[k] = (int(m.group(1)), int(m.group(2)))
     m = re.findall(r"^exit=(\d+)", t, re.M)
