@@ -1,0 +1,40 @@
+{
+  "info": {
+    "_postman_id": "db441668-15c2-5247-854b-20fb18388456",
+    "name": "Lab05 — Нийтийн API (jsonplaceholder)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "GET /users",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "https://jsonplaceholder.typicode.com/users",
+          "protocol": "https",
+          "host": [
+            "jsonplaceholder",
+            "typicode",
+            "com"
+          ],
+          "path": [
+            "users"
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Статус 200\", () => pm.response.to.have.status(200));",
+              "pm.test(\"Хариу нь массив\", () => pm.expect(pm.response.json()).to.be.an(\"array\"));",
+              "pm.test(\"Эхний хэрэглэгч Leanne Graham\", () => pm.expect(pm.response.json()[0].name).to.eql(\"Leanne Graham\"));"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

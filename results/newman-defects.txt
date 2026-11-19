@@ -1,0 +1,113 @@
+newman
+
+Lab05 — Олдсон согогууд
+
+❏ D01 — СОГОГ: studentID='toString' (байхгүй оюутан) → ERROR_NO_STUDENT байх ёстой
+↳ setup: хичээл CS101-D01
+  PUT http://localhost:3000/courses/CS101-D01 [errored]
+     connect ECONNREFUSED 127.0.0.1:3000
+  2. setup: 200 OK
+
+↳ POST: studentID toString → ERROR_NO_STUDENT хүлээнэ
+  POST http://localhost:3000/registrations [errored]
+     connect ECONNREFUSED 127.0.0.1:3000
+  4. Статус 200
+  5. result = ERROR_NO_STUDENT
+
+❏ D02 — СОГОГ: courseID='toString' (байхгүй хичээл) → ERROR_NO_COURSE байх ёстой, сервер унах ёсгүй
+↳ setup: оюутан B23-D02
+  PUT http://localhost:3000/students/B23-D02 [errored]
+     connect ECONNREFUSED 127.0.0.1:3000
+  7. setup: 200 OK
+
+↳ POST: courseID toString → ERROR_NO_COURSE хүлээнэ
+  POST http://localhost:3000/registrations [errored]
+     connect ECONNREFUSED 127.0.0.1:3000
+  9. Статус 200
+ 10. result = ERROR_NO_COURSE
+
+↳ GET /registrations: сервер амьд хэвээр байх ёстой
+  GET http://localhost:3000/registrations [errored]
+     connect ECONNREFUSED 127.0.0.1:3000
+ 12. Сервер хариулсан (200)
+
+┌─────────────────────────┬──────────┬──────────┐
+│                         │ executed │   failed │
+├─────────────────────────┼──────────┼──────────┤
+│              iterations │        1 │        0 │
+├─────────────────────────┼──────────┼──────────┤
+│                requests │        5 │        5 │
+├─────────────────────────┼──────────┼──────────┤
+│            test-scripts │        5 │        0 │
+├─────────────────────────┼──────────┼──────────┤
+│      prerequest-scripts │        0 │        0 │
+├─────────────────────────┼──────────┼──────────┤
+│              assertions │        7 │        7 │
+├─────────────────────────┴──────────┴──────────┤
+│ total run duration: 92ms                      │
+├───────────────────────────────────────────────┤
+│ total data received: 0B (approx)              │
+└───────────────────────────────────────────────┘
+
+[31m   # [39m[31m failure        [39m[31m detail                                                                                                                                                         [39m
+[90m     [39m[90m                [39m[90m                                                                                                                                                                [39m
+ 01.  Error                                                                                                                                                                          
+                      connect ECONNREFUSED 127.0.0.1:3000                                                                                                                            
+                      at request                                                                                                                                                     
+                      inside ""                                                                                                                                                      
+[90m     [39m[90m                [39m[90m                                                                                                                                                                [39m
+ 02.  AssertionError  setup: 200 OK                                                                                                                                                  
+                      expected PostmanResponse{ …(5) } to have property 'code'                                                                                                       
+                      at assertion:0 in test-script                                                                                                                                  
+                      inside "D01 — СОГОГ: studentID='toString' (байхгүй оюутан) → ERROR_NO_STUDENT байх ёстой / setup: хичээл CS101-D01"                                            
+[90m     [39m[90m                [39m[90m                                                                                                                                                                [39m
+ 03.  Error                                                                                                                                                                          
+                      connect ECONNREFUSED 127.0.0.1:3000                                                                                                                            
+                      at request                                                                                                                                                     
+                      inside ""                                                                                                                                                      
+[90m     [39m[90m                [39m[90m                                                                                                                                                                [39m
+ 04.  AssertionError  Статус 200                                                                                                                                                     
+                      expected PostmanResponse{ …(5) } to have property 'code'                                                                                                       
+                      at assertion:0 in test-script                                                                                                                                  
+                      inside "D01 — СОГОГ: studentID='toString' (байхгүй оюутан) → ERROR_NO_STUDENT байх ёстой / POST: studentID toString → ERROR_NO_STUDENT хүлээнэ"                
+[90m     [39m[90m                [39m[90m                                                                                                                                                                [39m
+ 05.  JSONError       result = ERROR_NO_STUDENT                                                                                                                                      
+                      "undefined" is not valid JSON                                                                                                                                  
+                      at assertion:1 in test-script                                                                                                                                  
+                      inside "D01 — СОГОГ: studentID='toString' (байхгүй оюутан) → ERROR_NO_STUDENT байх ёстой / POST: studentID toString → ERROR_NO_STUDENT хүлээнэ"                
+[90m     [39m[90m                [39m[90m                                                                                                                                                                [39m
+ 06.  Error                                                                                                                                                                          
+                      connect ECONNREFUSED 127.0.0.1:3000                                                                                                                            
+                      at request                                                                                                                                                     
+                      inside ""                                                                                                                                                      
+[90m     [39m[90m                [39m[90m                                                                                                                                                                [39m
+ 07.  AssertionError  setup: 200 OK                                                                                                                                                  
+                      expected PostmanResponse{ …(5) } to have property 'code'                                                                                                       
+                      at assertion:0 in test-script                                                                                                                                  
+                      inside "D02 — СОГОГ: courseID='toString' (байхгүй хичээл) → ERROR_NO_COURSE байх ёстой, сервер унах ёсгүй / setup: оюутан B23-D02"                             
+[90m     [39m[90m                [39m[90m                                                                                                                                                                [39m
+ 08.  Error                                                                                                                                                                          
+                      connect ECONNREFUSED 127.0.0.1:3000                                                                                                                            
+                      at request                                                                                                                                                     
+                      inside ""                                                                                                                                                      
+[90m     [39m[90m                [39m[90m                                                                                                                                                                [39m
+ 09.  AssertionError  Статус 200                                                                                                                                                     
+                      expected PostmanResponse{ …(5) } to have property 'code'                                                                                                       
+                      at assertion:0 in test-script                                                                                                                                  
+                      inside "D02 — СОГОГ: courseID='toString' (байхгүй хичээл) → ERROR_NO_COURSE байх ёстой, сервер унах ёсгүй / POST: courseID toString → ERROR_NO_COURSE хүлээнэ" 
+[90m     [39m[90m                [39m[90m                                                                                                                                                                [39m
+ 10.  JSONError       result = ERROR_NO_COURSE                                                                                                                                       
+                      "undefined" is not valid JSON                                                                                                                                  
+                      at assertion:1 in test-script                                                                                                                                  
+                      inside "D02 — СОГОГ: courseID='toString' (байхгүй хичээл) → ERROR_NO_COURSE байх ёстой, сервер унах ёсгүй / POST: courseID toString → ERROR_NO_COURSE хүлээнэ" 
+[90m     [39m[90m                [39m[90m                                                                                                                                                                [39m
+ 11.  Error                                                                                                                                                                          
+                      connect ECONNREFUSED 127.0.0.1:3000                                                                                                                            
+                      at request                                                                                                                                                     
+                      inside ""                                                                                                                                                      
+[90m     [39m[90m                [39m[90m                                                                                                                                                                [39m
+ 12.  AssertionError  Сервер хариулсан (200)                                                                                                                                         
+                      expected PostmanResponse{ …(5) } to have property 'code'                                                                                                       
+                      at assertion:0 in test-script                                                                                                                                  
+                      inside "D02 — СОГОГ: courseID='toString' (байхгүй хичээл) → ERROR_NO_COURSE байх ёстой, сервер унах ёсгүй / GET /registrations: сервер амьд хэвээр байх ёстой" 
+exit=1
